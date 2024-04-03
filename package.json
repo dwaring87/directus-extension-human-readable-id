@@ -1,0 +1,38 @@
+{
+	"name": "directus-extension-human-readable-id",
+	"description": "Generate a human-readable ID for a Directus text field",
+	"icon": "badge",
+	"version": "1.0.0",
+	"keywords": [
+		"directus",
+		"directus-extension",
+		"directus-extension-interface",
+        "human-readable-id"
+	],
+    "author": "David Waring <dev@davidwaring.net>",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/dwaring87/directus-extension-human-readable-id.git"
+    },
+    "homepage": "https://github.com/dwaring87/directus-extension-human-readable-id#readme",
+	"type": "module",
+	"files": [
+		"dist"
+	],
+	"directus:extension": {
+		"type": "interface",
+		"path": "dist/index.js",
+		"source": "src/index.js",
+		"host": "^10.10.0"
+	},
+	"scripts": {
+		"build": "directus-extension build",
+		"dev": "directus-extension build -w --no-minify",
+		"link": "directus-extension link"
+	},
+	"devDependencies": {
+		"@directus/extensions-sdk": "11.0.1",
+		"vue": "^3.4.21"
+	}
+}

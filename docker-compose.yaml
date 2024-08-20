@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  directus:
+    image: directus/directus
+    ports:
+     - 8059:8055
+    volumes:
+      - .:/directus/extensions/directus-extension-human-readable-id
+    environment:
+      KEY: asdf
+      SECRET: asdf
+      ADMIN_EMAIL: admin@admin.com
+      ADMIN_PASSWORD: admin
+      PUBLIC_URL: "http://localhost:8055"
+      EXTENSIONS_AUTO_RELOAD: "1"

@@ -10,7 +10,7 @@ export default {
     {
       field: 'delim',
       type: 'string',
-      name: 'Delimeter',
+      name: 'Delimiter',
       meta: {
         width: 'half',
         interface: 'input',

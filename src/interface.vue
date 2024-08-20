@@ -86,7 +86,7 @@
 
     mounted: function() {
       if ( !this.value ) {
-        let init = generate(this.delim);
+        let init = generate(this.delim || '-');
         this.$emit('input', init);
       }
     },
@@ -94,7 +94,7 @@
     methods: {
       formatValue: function() {
         let parts = [this.editAdjective, this.editColor, this.editAnimal].filter(x => x);
-        return parts.join(this.otherDelim || this.delim);
+        return parts.join(this.otherDelim || this.delim || '-');
       },
 
       /**
@@ -103,7 +103,7 @@
       edit: function() {
         let parts = [];
         if ( this.value ) {
-          parts = this.value.split(this.delim);
+          parts = this.value.split(this.delim || '-');
           
           // Check for unexpected delimiter
           if ( parts.length !== 3 ) {
@@ -134,8 +134,8 @@
        * Get a new human-readable-id for the value
        */
       refresh: function() {
-        let value = generate(this.delim);
-        [this.editAdjective, this.editColor, this.editAnimal] = value.split(this.delim);
+        let value = generate(this.delim || '-');
+        [this.editAdjective, this.editColor, this.editAnimal] = value.split(this.delim || '-');
       },
 
       /**

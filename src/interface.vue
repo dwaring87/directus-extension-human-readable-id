@@ -29,7 +29,7 @@
 
         <VNotice type="warning" v-if="otherDelim">
           <div>
-            <p>Unexpected delimiter: "{{ otherDelim }}" (expected "{{ delim }}")</p>
+            <p>Unexpected delimiter: "{{ otherDelim }}" (expected "{{ delim || '-' }}")</p>
             <v-button @click="otherDelim = null" v-if="otherDelim">Reset delimeter?</v-button>
           </div>
         </VNotice>

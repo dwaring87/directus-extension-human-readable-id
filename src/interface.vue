@@ -48,7 +48,7 @@
       </v-card-text>
       <v-card-actions>
         <v-button @click="editActive = false" outlined>Cancel</v-button>
-        <v-button @click="save" v-if="value !== (formatValue() || value) && !!editColor === !!editAnimal">Save</v-button>
+        <v-button @click="save" v-if="value !== (formatValue() || value)">Update</v-button>
       </v-card-actions>
     </v-card>
   </v-dialog>

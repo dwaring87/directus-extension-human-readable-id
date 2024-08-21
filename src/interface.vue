@@ -113,7 +113,7 @@
           // Check for unexpected delimiter
           if ( parts.length !== 3 ) {
             let delim = this.value.match(/[^a-zA-Z0-9]+/);
-            if (delim) {
+            if (delim && delim[0] !== (this.delim || '-') ) {
               this.otherDelim = delim[0];
               parts = this.value.split(this.otherDelim);
               if ( parts.length > 3 ) {

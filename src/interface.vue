@@ -104,6 +104,11 @@
         let parts = [];
         if ( this.value ) {
           parts = this.value.split(this.delim || '-');
+          if ( parts.length > 3 ) {
+            let [p1, p2, ...rest] = parts;
+            parts = [p1, p2, rest.join(this.delim || '-')];
+          }
+          console.log(parts);
           
           // Check for unexpected delimiter
           if ( parts.length !== 3 ) {
@@ -111,6 +116,10 @@
             if (delim) {
               this.otherDelim = delim[0];
               parts = this.value.split(this.otherDelim);
+              if ( parts.length > 3 ) {
+                let [p1, p2, ...rest] = parts;
+                parts = [p1, p2, rest.join(this.delim || '-')];
+              }
             }
           }
         }

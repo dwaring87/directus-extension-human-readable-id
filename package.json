@@ -24,7 +24,7 @@
 		"type": "interface",
 		"path": "dist/index.js",
 		"source": "src/index.js",
-		"host": "^10.10.0"
+		"host": "^10.10.0 || ^11.0.0"
 	},
 	"scripts": {
 		"build": "directus-extension build",

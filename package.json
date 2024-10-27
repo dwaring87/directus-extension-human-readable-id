@@ -2,7 +2,7 @@
 	"name": "directus-extension-human-readable-id",
 	"description": "Generate a human-readable ID for a Directus text field",
 	"icon": "badge",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"keywords": [
 		"directus",
 		"directus-extension",

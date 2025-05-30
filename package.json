@@ -2,20 +2,20 @@
 	"name": "directus-extension-human-readable-id",
 	"description": "Generate a human-readable ID for a Directus text field",
 	"icon": "badge",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"keywords": [
 		"directus",
 		"directus-extension",
 		"directus-extension-interface",
-        "human-readable-id"
+		"human-readable-id"
 	],
-    "author": "David Waring <dev@davidwaring.net>",
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/dwaring87/directus-extension-human-readable-id.git"
-    },
-    "homepage": "https://github.com/dwaring87/directus-extension-human-readable-id#readme",
+	"author": "David Waring <dev@davidwaring.net>",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/dwaring87/directus-extension-human-readable-id.git"
+	},
+	"homepage": "https://github.com/dwaring87/directus-extension-human-readable-id#readme",
 	"type": "module",
 	"files": [
 		"dist"

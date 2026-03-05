@@ -15,15 +15,15 @@
         <table style="width: 100%; border: 0">
           <tr>
             <td><strong>Adjective</strong></td>
-            <td><v-select v-model="editAdjective" :items="adjectives.map(v => ({text: v, value: v}))" allow-other /></td>
+            <td><v-select v-model="editAdjective" :items="_adjectives.sort().map(v => ({text: v, value: v}))" allow-other /></td>
           </tr>
           <tr>
             <td><strong>Color</strong></td>
-            <td><v-select v-model="editColor" :items="colors.map(v => ({text: v, value: v}))" allow-other /></td>
+            <td><v-select v-model="editColor" :items="_colors.sort().map(v => ({text: v, value: v}))" allow-other /></td>
           </tr>
           <tr>
             <td><strong>Animal</strong></td>
-            <td><v-select v-model="editAnimal" :items="animals.map(v => ({text: v, value: v}))" allow-other /></td>
+            <td><v-select v-model="editAnimal" :items="_animals.sort().map(v => ({text: v, value: v}))" allow-other /></td>
           </tr>
         </table>
 
@@ -55,13 +55,28 @@
 </template>
 
 <script>
-  import { adjectives, colors, animals, generate } from './hri';
+  import getAdjectives from "./assets/adjectives";
+  import getColors from "./assets/colors";
+  import getAnimals from "./assets/animals";
+  import { generate } from './hri';
 
   export default {
     props: {
       delim: {
         type: String,
         default: '-',
+      },
+      adjectives: {
+        type: Array,
+        default: getAdjectives()
+      },
+      colors: {
+        type: Array,
+        default: getColors()
+      },
+      animals: {
+        type: Array,
+        default: getAnimals()
       },
       value: {
         type: String,
@@ -71,9 +86,6 @@
 
     data: function() {
       return {
-        adjectives: adjectives,
-        colors: colors,
-        animals: animals,
         otherDelim: null,
         editActive: false,
         editAdjective: undefined,
@@ -82,11 +94,26 @@
       }
     },
 
+    computed: {
+      _delim() {
+        return this.delim || '-';
+      },
+      _adjectives() {
+        return this.adjectives && this.adjectives !== null ? this.adjectives : getAdjectives();
+      },
+      _colors() {
+        return this.colors && this.colors !== null ? this.colors : getColors();
+      },
+      _animals() {
+        return this.animals && this.animals !== null ? this.animals : getAnimals();
+      }
+    },
+
     emits: ['input'],
 
     mounted: function() {
       if ( !this.value ) {
-        let init = generate(this.delim || '-');
+        let init = generate(this._adjectives, this._colors, this._animals, this._delim);
         this.$emit('input', init);
       }
     },
@@ -94,7 +121,7 @@
     methods: {
       formatValue: function() {
         let parts = [this.editAdjective, this.editColor, this.editAnimal].filter(x => x);
-        return parts.join(this.otherDelim || this.delim || '-');
+        return parts.join(this.otherDelim || this._delim);
       },
 
       /**
@@ -103,22 +130,21 @@
       edit: function() {
         let parts = [];
         if ( this.value ) {
-          parts = this.value.split(this.delim || '-');
+          parts = this.value?.split(this._delim) || [];
           if ( parts.length > 3 ) {
             let [p1, p2, ...rest] = parts;
-            parts = [p1, p2, rest.join(this.delim || '-')];
+            parts = [p1, p2, rest.join(this._delim)];
           }
-          console.log(parts);
           
           // Check for unexpected delimiter
           if ( parts.length !== 3 ) {
             let delim = this.value.match(/[^a-zA-Z0-9]+/);
-            if (delim && delim[0] !== (this.delim || '-') ) {
+            if (delim && delim[0] !== (this._delim) ) {
               this.otherDelim = delim[0];
-              parts = this.value.split(this.otherDelim);
+              parts = this.value?.split(this.otherDelim) || [];
               if ( parts.length > 3 ) {
                 let [p1, p2, ...rest] = parts;
-                parts = [p1, p2, rest.join(this.delim || '-')];
+                parts = [p1, p2, rest.join(this._delim)];
               }
             }
           }
@@ -143,8 +169,8 @@
        * Get a new human-readable-id for the value
        */
       refresh: function() {
-        let value = generate(this.delim || '-');
-        [this.editAdjective, this.editColor, this.editAnimal] = value.split(this.delim || '-');
+        let value = generate(this._adjectives, this._colors, this._animals, this._delim);
+        [this.editAdjective, this.editColor, this.editAnimal] = value.split(this._delim);
       },
 
       /**

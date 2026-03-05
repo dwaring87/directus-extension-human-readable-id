@@ -1,3 +1,3 @@
 export default function getColors() {
-  return ["red", "orange", "yellow", "green", "blue", "indigo", "violet", "pink", "purple", "gold", "silver", "black", "lime", "navy", "teal", "brown", "white"].sort();
+  return ["amber", "aquamarine", "ash", "asphalt", "auburn", "avocado", "azure", "beige", "bisque", "black", "blue", "bone", "bordeaux", "brass", "bronze", "brown", "burgundy", "camel", "canary", "caramel", "celeste", "cerulean", "champagne", "charcoal", "chartreuse", "chestnut", "chocolate", "citron", "claret", "coal", "cobalt", "coffee", "coral", "corn", "cream", "crimson", "cyan", "denim", "desert", "ebony", "ecru", "emerald", "feldspar", "fuchsia", "gold", "gray", "green", "heather", "indigo", "ivory", "jet", "khaki", "lime", "magenta", "maroon", "mint", "navy", "olive", "orange", "pink", "plum", "purple", "red", "rust", "salmon", "sienna", "silver", "snow", "steel", "tan", "teal", "tomato", "violet", "white", "yellow"].sort();
 }

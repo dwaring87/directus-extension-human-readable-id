@@ -1,13 +1,4 @@
-import getAdjectives from "./assets/adjectives";
-import getColors from "./assets/colors";
-import getAnimals from "./assets/animals";
-
-const adjectives = getAdjectives();
-const colors = getColors();
-const animals = getAnimals();
-
-
-function _getRandom(items) {
+function _getRandom(items = []) {
   return items[Math.floor(Math.random()*items.length)];
 }
 
@@ -16,7 +7,7 @@ function _getRandom(items) {
  * @param {string} [delim] character to use as the delimiter
  * @returns random id
  */
-function generate(delim='-') {
+function generate(adjectives, colors, animals, delim='-') {
   const adjective = _getRandom(adjectives);
   const color = _getRandom(colors);
   const animal = _getRandom(animals);
@@ -25,4 +16,4 @@ function generate(delim='-') {
 }
 
 
-export { adjectives, colors, animals, generate };
+export { generate };

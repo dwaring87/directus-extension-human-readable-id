@@ -1,4 +1,7 @@
 import InterfaceComponent from './interface.vue';
+import getAdjectives from "./assets/adjectives";
+import getColors from "./assets/colors";
+import getAnimals from "./assets/animals";
 
 export default {
   id: 'human-readable-id',
@@ -16,6 +19,42 @@ export default {
         interface: 'input',
         options: {
           placeholder: '-',
+        }
+      },
+    },
+    {
+      field: 'adjectives',
+      type: 'json',
+      name: 'Adjectives',
+      meta: {
+        width: 'full',
+        interface: 'tags',
+        options: {
+          presets: getAdjectives(),
+        }
+      },
+    },
+    {
+      field: 'colors',
+      type: 'json',
+      name: 'Colors',
+      meta: {
+        width: 'full',
+        interface: 'tags',
+        options: {
+          presets: getColors(),
+        }
+      },
+    },
+    {
+      field: 'animals',
+      type: 'json',
+      name: 'Animals',
+      meta: {
+        width: 'full',
+        interface: 'tags',
+        options: {
+          presets: getAnimals(),
         }
       },
     },
